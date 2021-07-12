@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "chpe_scanner"
+version = "0.1.0"
+description = ""
+authors = ["Koh M. Nakagawa <ko.nakagawa@ffri.jp>"]
+license = "MIT License"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.3.2"
+lief = "0.11.3"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.8.0"
+black = "^21.5b0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
