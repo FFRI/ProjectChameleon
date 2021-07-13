@@ -1,5 +1,8 @@
 # Discovering a new relocation entry of ARM64X in recent Windows 10 on Arm
 
+- date: 2021/07/13
+- author: Koh M. Nakagawa
+
 ## Introduction
 
 Last December, Microsoft announced the x64 emulation for Windows 10 on Arm.
