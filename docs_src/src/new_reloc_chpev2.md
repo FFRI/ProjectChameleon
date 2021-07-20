@@ -61,7 +61,7 @@ Some Microsoft Office binaries are also distributed as CHPEs.
 ## CHPEV2
 
 One of the significant changes after the introduction of x64 emulation is that most DLLs previously built as Arm64 (e.g., DLLs in `%SystemRoot%\System32`) are now CHPE.
-[This script](https://github.ffri.local/ko-nakagawa/ProjectChameleon/tree/master/chpe_scanner) can be used to determine which of the system DLLs are CHPEs.
+[This script](https://github.com/FFRI/ProjectChameleon/tree/master/chpe_scanner) can be used to determine which of the system DLLs are CHPEs.
 In the following, I will refer to the new CHPE as CHPEV2 \* (and the one in the previous section as simply CHPE).
 
 > \* I named "CHPEV2" from the string "CHPEV2" in the Windows Insider SDK header (`ksarm64.h`).
