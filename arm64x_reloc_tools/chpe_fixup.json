@@ -1,0 +1,797 @@
+{
+	"header": {
+		"version": 1,
+		"size": 556,
+		"symbol": 6,
+		"fixup_info_size": 544
+	},
+	"blocks": [
+		{
+			"base_offset": 0,
+			"block_size": 44,
+			"entries": [
+				{
+					"meta_and_offset": 20724,
+					"meta": 5,
+					"offset": 244,
+					"reloc_entry_data_size": 2,
+					"size_to_be_written": 2,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 34404
+				},
+				{
+					"meta_and_offset": 37144,
+					"meta": 9,
+					"offset": 280,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 36864
+				},
+				{
+					"meta_and_offset": 37264,
+					"meta": 9,
+					"offset": 400,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 62272
+				},
+				{
+					"meta_and_offset": 37268,
+					"meta": 9,
+					"offset": 404,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 12
+				},
+				{
+					"meta_and_offset": 37320,
+					"meta": 9,
+					"offset": 456,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 45648
+				},
+				{
+					"meta_and_offset": 37324,
+					"meta": 9,
+					"offset": 460,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 312
+				}
+			]
+		},
+		{
+			"base_offset": 8192,
+			"block_size": 440,
+			"entries": [
+				{
+					"meta_and_offset": 37124,
+					"meta": 9,
+					"offset": 260,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37128,
+					"meta": 9,
+					"offset": 264,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181740048
+				},
+				{
+					"meta_and_offset": 37136,
+					"meta": 9,
+					"offset": 272,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37140,
+					"meta": 9,
+					"offset": 276,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181739024
+				},
+				{
+					"meta_and_offset": 37148,
+					"meta": 9,
+					"offset": 284,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37152,
+					"meta": 9,
+					"offset": 288,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181738000
+				},
+				{
+					"meta_and_offset": 37160,
+					"meta": 9,
+					"offset": 296,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37164,
+					"meta": 9,
+					"offset": 300,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181767696
+				},
+				{
+					"meta_and_offset": 37172,
+					"meta": 9,
+					"offset": 308,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37176,
+					"meta": 9,
+					"offset": 312,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181769744
+				},
+				{
+					"meta_and_offset": 37184,
+					"meta": 9,
+					"offset": 320,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37188,
+					"meta": 9,
+					"offset": 324,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181768720
+				},
+				{
+					"meta_and_offset": 37196,
+					"meta": 9,
+					"offset": 332,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37200,
+					"meta": 9,
+					"offset": 336,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181762576
+				},
+				{
+					"meta_and_offset": 37208,
+					"meta": 9,
+					"offset": 344,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37212,
+					"meta": 9,
+					"offset": 348,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181763600
+				},
+				{
+					"meta_and_offset": 37220,
+					"meta": 9,
+					"offset": 356,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37224,
+					"meta": 9,
+					"offset": 360,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181746192
+				},
+				{
+					"meta_and_offset": 37232,
+					"meta": 9,
+					"offset": 368,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37236,
+					"meta": 9,
+					"offset": 372,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181752336
+				},
+				{
+					"meta_and_offset": 37244,
+					"meta": 9,
+					"offset": 380,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37248,
+					"meta": 9,
+					"offset": 384,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181756432
+				},
+				{
+					"meta_and_offset": 37256,
+					"meta": 9,
+					"offset": 392,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37260,
+					"meta": 9,
+					"offset": 396,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181755408
+				},
+				{
+					"meta_and_offset": 37268,
+					"meta": 9,
+					"offset": 404,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37272,
+					"meta": 9,
+					"offset": 408,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181758480
+				},
+				{
+					"meta_and_offset": 37280,
+					"meta": 9,
+					"offset": 416,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37284,
+					"meta": 9,
+					"offset": 420,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181759504
+				},
+				{
+					"meta_and_offset": 37292,
+					"meta": 9,
+					"offset": 428,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37296,
+					"meta": 9,
+					"offset": 432,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181764624
+				},
+				{
+					"meta_and_offset": 37304,
+					"meta": 9,
+					"offset": 440,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37308,
+					"meta": 9,
+					"offset": 444,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181754384
+				},
+				{
+					"meta_and_offset": 37316,
+					"meta": 9,
+					"offset": 452,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37320,
+					"meta": 9,
+					"offset": 456,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181771792
+				},
+				{
+					"meta_and_offset": 37328,
+					"meta": 9,
+					"offset": 464,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37332,
+					"meta": 9,
+					"offset": 468,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181748240
+				},
+				{
+					"meta_and_offset": 37340,
+					"meta": 9,
+					"offset": 476,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37344,
+					"meta": 9,
+					"offset": 480,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181749264
+				},
+				{
+					"meta_and_offset": 37352,
+					"meta": 9,
+					"offset": 488,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37356,
+					"meta": 9,
+					"offset": 492,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181751312
+				},
+				{
+					"meta_and_offset": 37364,
+					"meta": 9,
+					"offset": 500,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37368,
+					"meta": 9,
+					"offset": 504,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181750288
+				},
+				{
+					"meta_and_offset": 37376,
+					"meta": 9,
+					"offset": 512,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37380,
+					"meta": 9,
+					"offset": 516,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181761552
+				},
+				{
+					"meta_and_offset": 37388,
+					"meta": 9,
+					"offset": 524,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37392,
+					"meta": 9,
+					"offset": 528,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181744144
+				},
+				{
+					"meta_and_offset": 37400,
+					"meta": 9,
+					"offset": 536,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37404,
+					"meta": 9,
+					"offset": 540,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181742096
+				},
+				{
+					"meta_and_offset": 37412,
+					"meta": 9,
+					"offset": 548,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37416,
+					"meta": 9,
+					"offset": 552,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181770768
+				},
+				{
+					"meta_and_offset": 37424,
+					"meta": 9,
+					"offset": 560,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37428,
+					"meta": 9,
+					"offset": 564,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181757456
+				},
+				{
+					"meta_and_offset": 37436,
+					"meta": 9,
+					"offset": 572,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37440,
+					"meta": 9,
+					"offset": 576,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181760528
+				},
+				{
+					"meta_and_offset": 37448,
+					"meta": 9,
+					"offset": 584,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37452,
+					"meta": 9,
+					"offset": 588,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181753360
+				},
+				{
+					"meta_and_offset": 37460,
+					"meta": 9,
+					"offset": 596,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37464,
+					"meta": 9,
+					"offset": 600,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181765648
+				},
+				{
+					"meta_and_offset": 37472,
+					"meta": 9,
+					"offset": 608,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37476,
+					"meta": 9,
+					"offset": 612,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181726736
+				},
+				{
+					"meta_and_offset": 37484,
+					"meta": 9,
+					"offset": 620,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37488,
+					"meta": 9,
+					"offset": 624,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181721616
+				},
+				{
+					"meta_and_offset": 37496,
+					"meta": 9,
+					"offset": 632,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37500,
+					"meta": 9,
+					"offset": 636,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181722640
+				},
+				{
+					"meta_and_offset": 37508,
+					"meta": 9,
+					"offset": 644,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37512,
+					"meta": 9,
+					"offset": 648,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181724688
+				},
+				{
+					"meta_and_offset": 37520,
+					"meta": 9,
+					"offset": 656,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37524,
+					"meta": 9,
+					"offset": 660,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181725712
+				},
+				{
+					"meta_and_offset": 37532,
+					"meta": 9,
+					"offset": 668,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37536,
+					"meta": 9,
+					"offset": 672,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181727760
+				},
+				{
+					"meta_and_offset": 37544,
+					"meta": 9,
+					"offset": 680,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4026531920
+				},
+				{
+					"meta_and_offset": 37548,
+					"meta": 9,
+					"offset": 684,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 4181723664
+				}
+			]
+		},
+		{
+			"base_offset": 40960,
+			"block_size": 20,
+			"entries": [
+				{
+					"meta_and_offset": 53304,
+					"meta": 13,
+					"offset": 56,
+					"reloc_entry_data_size": 8,
+					"size_to_be_written": 8,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 49912
+				},
+				{
+					"meta_and_offset": 49272,
+					"meta": 12,
+					"offset": 120,
+					"reloc_entry_data_size": 0,
+					"size_to_be_written": 8,
+					"reloc_type": "ZERO_FILL"
+				}
+			]
+		},
+		{
+			"base_offset": 45056,
+			"block_size": 40,
+			"entries": [
+				{
+					"meta_and_offset": 37240,
+					"meta": 9,
+					"offset": 376,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 5080
+				},
+				{
+					"meta_and_offset": 37264,
+					"meta": 9,
+					"offset": 400,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 61440
+				},
+				{
+					"meta_and_offset": 37268,
+					"meta": 9,
+					"offset": 404,
+					"reloc_entry_data_size": 4,
+					"size_to_be_written": 4,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 832
+				},
+				{
+					"meta_and_offset": 57008,
+					"meta": 13,
+					"offset": 3760,
+					"reloc_entry_data_size": 8,
+					"size_to_be_written": 8,
+					"reloc_type": "ASSIGN_VALUE",
+					"data_to_be_written": 49912
+				},
+				{
+					"meta_and_offset": 52976,
+					"meta": 12,
+					"offset": 3824,
+					"reloc_entry_data_size": 0,
+					"size_to_be_written": 8,
+					"reloc_type": "ZERO_FILL"
+				}
+			]
+		}
+	]
+}

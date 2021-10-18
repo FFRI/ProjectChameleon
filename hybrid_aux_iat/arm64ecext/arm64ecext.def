@@ -1,0 +1,8 @@
+EXPORTS
+	DebugExtensionNotify
+	DebugExtensionInitialize
+	DebugExtensionUninitialize
+	dump 
+	check
+	show
+	help

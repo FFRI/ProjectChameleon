@@ -15,7 +15,9 @@ This project collects reverse engineering results of CHPEV2.
 
 - [Reverse engineering results of a new relocation entry, `IMAGE_DYNAIC_RELOCATION_ARM64X` in CHPEV2 files](https://ffri.github.io/ProjectChameleon/new_reloc_chpev2/).
 - [Ghidra scripts to analyze CHPEV2 files](./ghidra_scripts)
-- [A Python script to find CHPE and CHPEV2 files in Windows](./chpe_scanner)
+- [A Python script to find CHPE and CHPEV2 files in Windows 10/11 on ARM](./chpe_scanner)
+- [PoC code and tools for Hybrid Auxiliary IAT hooking](./hybrid_aux_iat)
+- [A Python script for analyzing and modifying `IMAGE_DYNAMIC_RELOCATION_ARM64X`](./arm64x_reloc_tools)
 
 ## Why "Chameleon" ?
 

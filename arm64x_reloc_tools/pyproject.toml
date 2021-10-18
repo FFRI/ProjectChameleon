@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "arm64x_reloc_tools"
+version = "0.1.0"
+description = ""
+authors = ["Koh M. Nakagawa <ko.nakagawa@ffri.jp>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+lief = "^0.11.5"
+typer = "^0.3.2"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.910"
+black = "^21.6b0"
+isort = "^5.9.1"
+flake8 = "^3.9.2"
+flake8-isort = "^4.0.0"
+flake8-black = "^0.2.1"
+pre-commit = "^2.13.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
