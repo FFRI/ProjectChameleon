@@ -42,7 +42,7 @@ public class ApplyChpeFixup extends GhidraScript {
         var fout = new File(dir, currentProgram.getName() + ".x64");
         var exporter = new BinaryExporter();
         exporter.export(fout, currentProgram, currentProgram.getMemory(), getMonitor());
-        popup("Relocation entries are exported to " + fout.getAbsolutePath() + ".");
+        popup("Relocation applied binary is exported to " + fout.getAbsolutePath() + ".");
     }
 
     public void run() throws Exception {
