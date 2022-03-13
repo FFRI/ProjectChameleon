@@ -250,8 +250,9 @@ DWORD64 FindDllExport2(P_ReadDll ReadDll, HANDLE hProcess, DWORD64 DllBase, IMAG
 
 				proc = DllBase + functions[ordinals[i]];
 
-				if (((PIMAGE_NT_HEADERS32)pNTHeader)->FileHeader.Machine == IMAGE_FILE_MACHINE_ARMNT)
-					proc -= 1; // WTF why is that needed?
+        // Note: if this is an arm32 image the real address has a 0x01 appended to indicate it uses the thumb instruction set
+				//if (((PIMAGE_NT_HEADERS32)pNTHeader)->FileHeader.Machine == IMAGE_FILE_MACHINE_ARMNT)
+				//	proc &= ~1;
 
 				break;
 			}
