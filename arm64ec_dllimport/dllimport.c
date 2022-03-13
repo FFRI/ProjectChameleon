@@ -249,6 +249,10 @@ DWORD64 FindDllExport2(P_ReadDll ReadDll, HANDLE hProcess, DWORD64 DllBase, IMAG
 			if (ordinals[i] < exports->NumberOfFunctions) {
 
 				proc = DllBase + functions[ordinals[i]];
+
+				if (((PIMAGE_NT_HEADERS32)pNTHeader)->FileHeader.Machine == IMAGE_FILE_MACHINE_ARMNT)
+					proc -= 1; // WTF why is that needed?
+
 				break;
 			}
 		}
