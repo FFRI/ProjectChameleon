@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -38,6 +38,8 @@
     
     
       
+
+
     
     
   </head>
@@ -68,7 +70,9 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Project Chameleon" class="md-header__button md-logo" aria-label="Project Chameleon" data-md-component="logo">
       
@@ -106,14 +110,18 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -143,11 +151,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -229,6 +240,8 @@
       </a>
       
         
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -318,6 +331,8 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -489,24 +504,24 @@ However, in the case of the CHPEV2 built for ARM64X, these DLLs are loaded corre
 For example, consider the following code.</p>
 <!--
 
-<div class="codehilite"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;Windows.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Windows.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">HMODULE</span> <span class="n">baseAddr</span> <span class="o">=</span> <span class="n">LoadLibraryA</span><span class="p">(</span><span class="s">&quot;user32.dll&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">baseAddr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Image base address = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">baseAddr</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Image is not loaded</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;GetLastError() = %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">GetLastError</span><span class="p">());</span>
-        <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">HMODULE</span><span class="w"> </span><span class="n">baseAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoadLibraryA</span><span class="p">(</span><span class="s">&quot;user32.dll&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">baseAddr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Image base address = %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">baseAddr</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Image is not loaded</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;GetLastError() = %x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">GetLastError</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_FAILURE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="n">PVOID</span> <span class="n">funcAddr</span> <span class="o">=</span> <span class="n">GetProcAddress</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span> <span class="s">&quot;MessageBoxA&quot;</span><span class="p">);</span>
-    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;MessageBoxA is located at %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">funcAddr</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="n">PVOID</span><span class="w"> </span><span class="n">funcAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetProcAddress</span><span class="p">(</span><span class="n">baseAddr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MessageBoxA&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;MessageBoxA is located at %p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">funcAddr</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -551,21 +566,21 @@ The table consists of several blocks specified by the <code>IMAGE_DYNAMIC_RELOCA
 There is one block per page to which the relocation is applied, and the <code>VirtualAddress</code> of <code>IMAGE_DYNAMIC_RELOCATION_ARM64X_BLOCK</code> contains the page RVA.</p>
 <!--
 
-<div class="codehilite"><pre><span></span><code><span class="k">struct</span> <span class="nc">IMAGE_DYNAMIC_RELOCATION_TABLE</span> <span class="p">{</span>
-    <span class="n">DWORD</span> <span class="n">Version</span><span class="p">;</span> <span class="c1">// always 1</span>
-    <span class="n">DWORD</span> <span class="n">Size</span><span class="p">;</span>
-<span class="p">};</span>
+<div class="codehilite"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">IMAGE_DYNAMIC_RELOCATION_TABLE</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">Version</span><span class="p">;</span><span class="w"> </span><span class="c1">// always 1</span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">Size</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">struct</span> <span class="nc">IMAGE_DYNAMIC_RELOCATION_ARM64X_HEADER</span> <span class="p">{</span>
-    <span class="n">ULONGLONG</span> <span class="n">Symbol</span><span class="p">;</span> <span class="c1">// always 6</span>
-    <span class="n">DWORD</span> <span class="n">FixupInfoSize</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">IMAGE_DYNAMIC_RELOCATION_ARM64X_HEADER</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">ULONGLONG</span><span class="w"> </span><span class="n">Symbol</span><span class="p">;</span><span class="w"> </span><span class="c1">// always 6</span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">FixupInfoSize</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 
-<span class="k">struct</span> <span class="nc">IMAGE_DYNAMIC_RELOCATION_ARM64X_BLOCK</span> <span class="p">{</span>
-    <span class="n">DWORD</span> <span class="n">VirtualAddress</span><span class="p">;</span> <span class="c1">// page RVA</span>
-    <span class="n">DWORD</span> <span class="n">SizeOfBlock</span><span class="p">;</span>
-    <span class="c1">// WORD Entries[1]; // three types of relocation entries exist</span>
-<span class="p">};</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">IMAGE_DYNAMIC_RELOCATION_ARM64X_BLOCK</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="p">;</span><span class="w"> </span><span class="c1">// page RVA</span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">SizeOfBlock</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// WORD Entries[1]; // three types of relocation entries exist</span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -579,13 +594,13 @@ There is one block per page to which the relocation is applied, and the <code>Vi
 The first two bytes of data of each component is represented by the following <code>MetadataAndOffset</code> structure, where the <code>offset</code> is an offset from the starting address specified in the page RVA for the block, and <code>meta</code> contains the relocation type and other metadata (sign or scale index).</p>
 <!--
 
-<div class="codehilite"><pre><span></span><code><span class="k">typedef</span> <span class="k">union</span> <span class="p">{</span>
-    <span class="k">struct</span> <span class="p">{</span>
-        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nl">offset</span><span class="p">:</span> <span class="mi">12</span><span class="p">;</span>
-        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="nl">meta</span><span class="p">:</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">field</span><span class="p">;</span>
-    <span class="kt">uint16_t</span> <span class="n">raw</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">MetadataAndOffset</span><span class="p">;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">offset</span><span class="o">:</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">meta</span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">field</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">raw</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">MetadataAndOffset</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -605,22 +620,22 @@ The following C code illustrates how this relocation entry is applied.</p>
 <!--
 
 <div class="codehilite"><pre><span></span><code><span class="c1">// VirtualAddress is the value of IMAGE_DYNAMIC_RELOCATION_ARM64X.VirtualAddress</span>
-<span class="kt">void</span> <span class="nf">applyDVRTArm64X</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">ImageBase</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">VirtualAddress</span><span class="p">,</span> <span class="kt">uint16_t</span><span class="o">*</span> <span class="n">Entries</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">uint16_t</span> <span class="n">metaAndOffset</span> <span class="o">=</span> <span class="o">*</span><span class="n">Entries</span>
-    <span class="kt">uint8_t</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">metaAndOffset</span> <span class="o">&amp;</span> <span class="mh">0xf000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">meta</span> <span class="o">&amp;</span> <span class="mb">0b11</span><span class="p">)</span> <span class="o">==</span> <span class="mb">0b00</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// zero fill entry</span>
-        <span class="kt">uint32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="n">meta</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mb">0b11</span><span class="p">);</span>
-        <span class="kt">uint32_t</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">metaAndOffset</span> <span class="o">&amp;</span> <span class="mh">0xfff</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">targetAddr</span> <span class="o">=</span> <span class="n">ImageBase</span> <span class="o">+</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">offset</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">*</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">applyDVRTArm64X</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ImageBase</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="o">*</span><span class="w"> </span><span class="n">Entries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">Entries</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">meta</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b00</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// zero fill entry</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">((</span><span class="n">meta</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xfff</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageBase</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -637,24 +652,24 @@ The following pseudocode illustrates how this relocation entry is applied.</p>
 <!--
 
 <div class="codehilite"><pre><span></span><code><span class="c1">// VirtualAddress is the value of IMAGE_DYNAMIC_RELOCATION_ARM64X.VirtualAddress</span>
-<span class="kt">void</span> <span class="nf">applyDVRTArm64X</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">ImageBase</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">VirtualAddress</span><span class="p">,</span> <span class="kt">uint16_t</span><span class="o">*</span> <span class="n">Entries</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">uint16_t</span> <span class="n">metaAndOffset</span> <span class="o">=</span> <span class="o">*</span><span class="n">Entries</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">metaAndOffset</span> <span class="o">&amp;</span> <span class="mh">0xf000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">meta</span> <span class="o">&amp;</span> <span class="mb">0b11</span><span class="p">)</span> <span class="o">==</span> <span class="mb">0b01</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// assign value entry</span>
-        <span class="kt">uint32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="n">meta</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mb">0b11</span><span class="p">);</span>
-        <span class="kt">uint32_t</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">metaAndOffset</span> <span class="o">&amp;</span> <span class="mh">0xfff</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">targetAddr</span> <span class="o">=</span> <span class="n">ImageBase</span> <span class="o">+</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">offset</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">srcAddr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">Entries</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)</span><span class="n">srcAddr</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">*</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">srcAddr</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
-            <span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">srcAddr</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="p">...</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">applyDVRTArm64X</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ImageBase</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="o">*</span><span class="w"> </span><span class="n">Entries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">Entries</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">meta</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b01</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// assign value entry</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">((</span><span class="n">meta</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xfff</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageBase</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">srcAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">Entries</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)</span><span class="n">srcAddr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">srcAddr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="n">srcAddr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -685,21 +700,21 @@ This value multiplied by the scale factor is added (or subtracted) to the data i
 <!--
 
 <div class="codehilite"><pre><span></span><code><span class="c1">// VirtualAddress is the value of IMAGE_DYNAMIC_RELOCATION_ARM64X.VirtualAddress</span>
-<span class="kt">void</span> <span class="nf">applyDVRTArm64X</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">ImageBase</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">VirtualAddress</span><span class="p">,</span> <span class="kt">uint16_t</span><span class="o">*</span> <span class="n">Entries</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">uint16_t</span> <span class="n">metaAndOffset</span> <span class="o">=</span> <span class="o">*</span><span class="n">Entries</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">meta</span> <span class="o">=</span> <span class="p">(</span><span class="n">metaAndOffset</span> <span class="o">&amp;</span> <span class="mh">0xf000</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">meta</span> <span class="o">&amp;</span> <span class="mb">0b11</span><span class="p">)</span> <span class="o">==</span> <span class="mb">0b10</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// add (or sub) delta</span>
-        <span class="kt">uint32_t</span> <span class="n">scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">meta</span> <span class="o">&amp;</span> <span class="mb">0b1000</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">?</span>  <span class="mi">8</span> <span class="o">:</span> <span class="mi">4</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">sign</span>  <span class="o">=</span> <span class="p">(</span><span class="n">meta</span> <span class="o">&amp;</span> <span class="mb">0b0100</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">?</span> <span class="mi">-1</span> <span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">applyDVRTArm64X</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">ImageBase</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="o">*</span><span class="w"> </span><span class="n">Entries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">Entries</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xf000</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">meta</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// add (or sub) delta</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">meta</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b1000</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w">  </span><span class="mi">8</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sign</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">meta</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b0100</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 
-        <span class="kt">uint32_t</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">metaAndOffset</span> <span class="o">&amp;</span> <span class="mh">0xfff</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">targetAddr</span> <span class="o">=</span> <span class="n">ImageBase</span> <span class="o">+</span> <span class="n">VirtualAddress</span> <span class="o">+</span> <span class="n">offset</span><span class="p">;</span>
-        <span class="kt">uint16_t</span> <span class="n">data</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)((</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">Entries</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metaAndOffset</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xfff</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">targetAddr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageBase</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">VirtualAddress</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="kt">uint16_t</span><span class="o">*</span><span class="p">)((</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">Entries</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
 
-        <span class="o">*</span><span class="p">(</span><span class="kt">int32_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span> <span class="o">+=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">data</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="p">...</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="o">*</span><span class="p">(</span><span class="kt">int32_t</span><span class="o">*</span><span class="p">)</span><span class="n">targetAddr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">sign</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 
@@ -784,7 +799,8 @@ Details of CHPEV2 ARM64X are not included, but I think that its details might be
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href=".." class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Top page" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -805,10 +821,12 @@ Details of CHPEV2 ARM64X are not included, but I think that its details might be
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
         
       </div>
       
@@ -820,10 +838,10 @@ Details of CHPEV2 ARM64X are not included, but I think that its details might be
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
       
     
   </body>
