@@ -18,6 +18,7 @@ This project collects reverse engineering results of CHPEV2.
 - [A Python script to find CHPE and CHPEV2 files in Windows 10/11 on ARM](./chpe_scanner)
 - [PoC code and tools for Hybrid Auxiliary IAT hooking](./hybrid_aux_iat)
 - [A Python script for analyzing and modifying `IMAGE_DYNAMIC_RELOCATION_ARM64X`](./arm64x_reloc_tools)
+- [Handmade `GetProcAddress` to get the native "#..." arm64 function](./arm64ec_dllimport) (Thanks @DavidXanatos)
 
 ## Why "Chameleon" ?
 
