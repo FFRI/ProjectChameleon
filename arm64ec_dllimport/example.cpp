@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * This file can be also used under the therms of the GLP and LGPL licenses.
- *  Whatever floats your boat...
- *
  */
  
 #include <stdio.h>
