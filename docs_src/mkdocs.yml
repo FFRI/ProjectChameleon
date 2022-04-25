@@ -5,6 +5,7 @@ site_dir: ../docs
 nav:
   - Top page: 'index.md'
   - 'Discovering a new relocation entry of ARM64X in recent Windows 10 on Arm': 'new_reloc_chpev2.md'
+  - 'Relock 3.0: Relocation-based obfuscation revisited in Windows 11 on Arm': 'arm64x_reloc_obfuscation.md'
 
 repo_url: https://github.com/FFRI/ProjectChameleon
 edit_uri: edit/main/docs_src/src/

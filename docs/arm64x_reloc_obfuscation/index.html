@@ -1,0 +1,869 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Relock 3.0: Relocation-based obfuscation revisited in Windows 11 on Arm - Project Chameleon</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#relock-30-relocation-based-obfuscation-revisited-in-windows-11-on-arm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Project Chameleon" class="md-header__button md-logo" aria-label="Project Chameleon" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Project Chameleon
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Relock 3.0: Relocation-based obfuscation revisited in Windows 11 on Arm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/FFRI/ProjectChameleon/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Project Chameleon" class="md-nav__button md-logo" aria-label="Project Chameleon" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Project Chameleon
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/FFRI/ProjectChameleon/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Top page
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../new_reloc_chpev2/" class="md-nav__link">
+        Discovering a new relocation entry of ARM64X in recent Windows 10 on Arm
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Relock 3.0: Relocation-based obfuscation revisited in Windows 11 on Arm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Relock 3.0: Relocation-based obfuscation revisited in Windows 11 on Arm
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-works" class="md-nav__link">
+    Related works
+  </a>
+  
+    <nav class="md-nav" aria-label="Related works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-relocation" class="md-nav__link">
+    Base relocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relock-based-vulnerability-in-windows-7-virus-bulletin-2011" class="md-nav__link">
+    "Relock-based vulnerability in Windows 7" (Virus Bulletin 2011)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relocation-bonus-attacking-the-windows-loader-makes-analysts-switch-careers-def-con-26" class="md-nav__link">
+    "Relocation Bonus Attacking the Windows Loader Makes Analysts Switch Careers" (DEF CON 26)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relocation-based-obfuscation-by-dvrt-arm64x" class="md-nav__link">
+    Relocation-based obfuscation by DVRT ARM64X
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-techniques-to-make-analysis-more-difficult" class="md-nav__link">
+    Further techniques to make analysis more difficult
+  </a>
+  
+    <nav class="md-nav" aria-label="Further techniques to make analysis more difficult">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-header-modification" class="md-nav__link">
+    Section Header Modification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fooling-windbg" class="md-nav__link">
+    Fooling WinDbg
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-effect-parent-process-dependent-code-execution" class="md-nav__link">
+    Side Effect: Parent-process-dependent code execution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-works" class="md-nav__link">
+    Related works
+  </a>
+  
+    <nav class="md-nav" aria-label="Related works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-relocation" class="md-nav__link">
+    Base relocation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relock-based-vulnerability-in-windows-7-virus-bulletin-2011" class="md-nav__link">
+    "Relock-based vulnerability in Windows 7" (Virus Bulletin 2011)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relocation-bonus-attacking-the-windows-loader-makes-analysts-switch-careers-def-con-26" class="md-nav__link">
+    "Relocation Bonus Attacking the Windows Loader Makes Analysts Switch Careers" (DEF CON 26)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relocation-based-obfuscation-by-dvrt-arm64x" class="md-nav__link">
+    Relocation-based obfuscation by DVRT ARM64X
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-techniques-to-make-analysis-more-difficult" class="md-nav__link">
+    Further techniques to make analysis more difficult
+  </a>
+  
+    <nav class="md-nav" aria-label="Further techniques to make analysis more difficult">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-header-modification" class="md-nav__link">
+    Section Header Modification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fooling-windbg" class="md-nav__link">
+    Fooling WinDbg
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#side-effect-parent-process-dependent-code-execution" class="md-nav__link">
+    Side Effect: Parent-process-dependent code execution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/FFRI/ProjectChameleon/edit/main/docs_src/src/arm64x_reloc_obfuscation.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="relock-30-relocation-based-obfuscation-revisited-in-windows-11-on-arm">Relock 3.0: Relocation-based obfuscation revisited in Windows 11 on Arm<a class="headerlink" href="#relock-30-relocation-based-obfuscation-revisited-in-windows-11-on-arm" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Date: 2021/10/29</li>
+<li>Author: Koh M. Nakagawa</li>
+</ul>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>My previous post introduced a new relocation entry for ARM64X: <code>IMAGE_DYNAMIC_RELOCATION_ARM64X</code>, where I explained how this relocation entry allows ARM64X to behave as ARM64 and ARM64EC binaries.
+Please refer to <a href="../new_reloc_chpev2/">this post</a> if you have not read it.</p>
+<p>According to <a href="https://mobile.twitter.com/itanium_guy/status/1461465563176194051">a tweet</a> from a Microsoft developer, the ARM64X binary has been called a "chameleon binary" instead of a fat binary.
+ARM64X is a binary code that changes its architecture depending on its surroundings.
+Therefore, they named it chameleon, owing to its ability to change color to match its surroundings.</p>
+<p>In my previous post, I explained that <code>IMAGE_DYNAMIC_RELOCATION_ARM64X</code> has three relocation entries.</p>
+<ul>
+<li>Zero fill</li>
+<li>Assign value</li>
+<li>Delta</li>
+</ul>
+<p>Of these, the relocation entry "assign value" is particularly interesting.
+Unlike <a href="https://corkamiwiki.github.io/PE#relocations"><code>IMAGE_REL_BASED_HIGHLOW</code></a>, which is a well-known relocation entry, "assign value" allows arbitrary addresses to be overwritten with arbitrary values.</p>
+<p>Because this "assign value" relocation entry enables flexible and dynamic binary rewriting, can it not be abused? This post describes an obfuscation technique that exploits <code>IMAGE_DYNAMIC_RELOCATION_ARM64X</code> in ARM64X. In the following, <code>IMAGE_DYNAMIC_RELOCATION_ARM64X</code> is referred to as DVRT ARM64X because this relocation entry is a Dynamic Value Relocation Table (DVRT) introduced in ARM64X.</p>
+<h2 id="related-works">Related works<a class="headerlink" href="#related-works" title="Permanent link">&para;</a></h2>
+<p>Relocation-based obfuscation techniques have been known for a long time.
+First, I will briefly explain the well-known base relocation entry (<code>IMAGE_REL_BASED_HIGHLOW</code>) and the relocation-based obfuscation technique that exploits it.</p>
+<h3 id="base-relocation">Base relocation<a class="headerlink" href="#base-relocation" title="Permanent link">&para;</a></h3>
+<p>First, let us briefly review the relocation process in Windows.
+In the recent version of Windows, ASLR has been enabled in most system modules; therefore, the value of the image base set at runtime is usually different from the value of <a href="https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#optional-header-standard-fields-image-only">BaseOfCode</a> in the PE header.
+In this post, the value of BaseOfCode described in the PE header is denoted as "desired base" for clarity.</p>
+<p>If the code is executed when the desired base is different from the image base, an error will occur in executing instructions specifying an absolute address.
+For example, consider the following code that prints a string in the <code>.data</code> section for standard output.</p>
+<div class="codehilite"><pre><span></span><code><span class="nf">push</span><span class="w"> </span><span class="mh">0x403018</span><span class="w"> </span><span class="c1"># a pointer to a string</span><span class="w"></span>
+<span class="nf">push</span><span class="w"> </span><span class="mh">0x402100</span><span class="w"> </span><span class="c1"># &quot;%s\n&quot;</span><span class="w"></span>
+<span class="nf">call</span><span class="w"> </span><span class="nv">_printf</span><span class="w">  </span><span class="c1"># printf(&quot;%s\n&quot;, &quot;Hello&quot;)</span><span class="w"></span>
+</code></pre></div>
+
+<p>As shown above, the data contained in the <code>.data</code> section is specified as an absolute address (such as 0x403018 and 0x402100).
+This absolute address is for the case where the image base is set to the desired base (0x400000).
+Therefore, unintended data access will occur when the image base is different from the desired base owing to ASLR.
+A program loader solves this problem by dynamically patching the executable at runtime to work on the new image base, which is called the relocation process.
+The following pseudo-code illustrates how the relocation is applied.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Listing 1</span>
+<span class="c1">// The following pseudo code is from https://media.defcon.org/DEF%20CON%2026/DEF%20CON%2026%20presentations/DEFCON-26-Nick-Cano-Relocation-Bonus-Attacking-the-Win-Loader.pdf</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">delta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imageBase</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">desiredBase</span><span class="p">;</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">reloc</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">relocs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reloc</span><span class="p">.</span><span class="n">VirtualAddress</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">reloc</span><span class="p">.</span><span class="n">entries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">adr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">offset</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// apply patch to the image</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IMAGE_REL_BASED_HIGHLOW</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">((</span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">adr</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IMAGE_REL_BASED_DIR64</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">((</span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">adr</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">delta</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IMAGE_REL_BASED_HIGH</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">((</span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">adr</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="p">)((</span><span class="n">delta</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFF</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">IMAGE_REL_BASED_LOW</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="o">*</span><span class="p">((</span><span class="kt">uint16_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">adr</span><span class="p">)</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="p">)</span><span class="n">delta</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>In the relocation process, <code>delta</code> (the subtraction of the desired base from the image base) value is added to the instruction operand containing the absolute address. After the relocation process, the absolute addresses are fixed to work in the new image base.</p>
+<p>There are several types of relocations (<code>IMAGE_REL_BASED_HIGHLOW</code>, <code>IMAGE_REL_BASED_DIR64</code>, <code>IMAGE_REL_BASED_HIGH</code>, and <code>IMAGE_REL_BASED_LOW</code>), and patches differ depending on the relocation type. Some relocations are disabled in recent Windows (for example, <code>IMAGE_REL_BASED_HIGH</code> is no longer supported).</p>
+<p>Next, I introduce the previous studies of relocation-based obfuscation.</p>
+<h3 id="relock-based-vulnerability-in-windows-7-virus-bulletin-2011"><a href="https://www.virusbulletin.com/virusbulletin/2011/08/relock-based-vulnerability-windows-7">"Relock-based vulnerability in Windows 7" (Virus Bulletin 2011)</a><a class="headerlink" href="#relock-based-vulnerability-in-windows-7-virus-bulletin-2011" title="Permanent link">&para;</a></h3>
+<p>This research explains relocation-based obfuscation in Windows XP/2000 and Windows 7.
+The idea is simple; we can extract the payload at runtime by exploiting the relocation process as a decoder.
+So, we can encrypt the data in the executable file (e.g., code in the <code>.text</code> section), then extract the payload at runtime by the dynamic patch of the relocation process.
+As can be seen from the code above (Listing 1), when the relocation process is used as a decoder, the ability to control the value of <code>delta</code> is essential.
+In this research, the authors use the vulnerability in the Windows loader to control the <code>delta</code> value.
+Specifically, the following two vulnerabilities were used:</p>
+<ul>
+<li>Windows XP/2000: When the desired base is set to 0, the image base at runtime is automatically set to 0x10000.</li>
+<li>Windows 7: When the desired base is set to 0X7FFE0000 or higher, the runtime image base is automatically set to 0x10000.</li>
+</ul>
+<p>For Windows XP/2000, a method was proposed to exploit the <code>IMAGE_REL_BASED_HIGH</code>.
+This obfuscation technique was used to obfuscate the W32/Relock malware.
+However, <code>IMAGE_REL_BASED_HIGH</code> is no longer available on Windows 7.
+Instead, a method using <code>IMAGE_REL_BASED_HIGHLOW</code> has been proposed, and this method is called Relock 2.0 in their research article.</p>
+<h3 id="relocation-bonus-attacking-the-windows-loader-makes-analysts-switch-careers-def-con-26"><a href="https://media.defcon.org/DEF%20CON%2026/DEF%20CON%2026%20presentations/DEFCON-26-Nick-Cano-Relocation-Bonus-Attacking-the-Win-Loader.pdf">"Relocation Bonus Attacking the Windows Loader Makes Analysts Switch Careers" (DEF CON 26)</a><a class="headerlink" href="#relocation-bonus-attacking-the-windows-loader-makes-analysts-switch-careers-def-con-26" title="Permanent link">&para;</a></h3>
+<p>This presentation describes the relocation-based obfuscation available in Windows 7 and Windows 10.</p>
+<p>The method used for Windows 7 is the same as that described in <a href="#relock-based-vulnerability-in-windows-7-virus-bulletin-2011">the previous section</a>.
+This presentation is novel in that it proposes a new method for Windows 10.
+Since the vulnerability described in the previous section was fixed in Windows 10, the <code>delta</code> could no longer be controlled.
+The author solved this problem by repeating the execution until the image base value becomes a specific value.</p>
+<h2 id="relocation-based-obfuscation-by-dvrt-arm64x">Relocation-based obfuscation by DVRT ARM64X<a class="headerlink" href="#relocation-based-obfuscation-by-dvrt-arm64x" title="Permanent link">&para;</a></h2>
+<p>As mentioned in the <a href="#introduction">introduction</a>, the DVRT ARM64X relocation enables an arbitrary write in the target module.
+By abusing DVRT ARM64X, we can obfuscate an executable in the same manner as described in the previous section (Figure 1).</p>
+<figure>
+    <img src="../assets/arm64x_reloc_decoding.png">
+    <figcaption>Figure 1 Relocation-based obfuscation by DVRT ARM64X </figcaption>
+</figure>
+
+<p>Let me show an example to obfuscate some code in <code>.text</code> using DVRT ARM64X.
+An executable demonstrated in this section can be created using <a href="https://github.com/FFRI/ProjectChameleon/tree/master/arm64x_reloc_tools">this tool</a>.</p>
+<p>Figure 2 shows the contents of the obfuscated executable's code section.
+The junk data are placed in the code section (Figure 2).</p>
+<figure>
+    <img src="../assets/arm64x_disas_0x7000_static.png">
+    <figcaption>Figure 2 Code section content (static)</figcaption>
+</figure>
+
+<p>Of course, this code cannot be executed in its current form.
+So, we need to overwrite the code section with a dynamic patch using "assign value" relocation of DVRT ARM64X.
+By adding the "assign value" relocation entries of DVRT ARM64X and exploiting these dynamic patches, we can expand the following code and execute it at runtime (Figure 3).</p>
+<figure>
+    <img src="../assets/arm64x_disas_0x7000_dynamic.png">
+    <figcaption>Figure 3 Code section content (dynamic)</figcaption>
+</figure>
+
+<p>Additionally, by changing the PE Header's contents, it is possible to change the contents of the IAT and EAT to something else.
+This makes it possible to cheat the results of the static analysis tools.</p>
+<p>In contrast to the previous studies described in <a href="#related-works">related works</a>, we can not only change the contents of IATs and EATs to junk data but also change them and display fake IATs and EATs.
+Remember that the DVRT ARM64X is different from conventional relocation entries in that it can enable the arbitrary write in the target module.
+Therefore, it is possible to make the file appear to be an unobfuscated executable.</p>
+<h2 id="further-techniques-to-make-analysis-more-difficult">Further techniques to make analysis more difficult<a class="headerlink" href="#further-techniques-to-make-analysis-more-difficult" title="Permanent link">&para;</a></h2>
+<p>You might think that this obfuscation technique can be easily analyzed by dumping the executable on the memory.
+Is it possible to make the analysis even more difficult?
+In the following section, I introduce some ideas to make the analysis more difficult.</p>
+<h3 id="section-header-modification">Section Header Modification<a class="headerlink" href="#section-header-modification" title="Permanent link">&para;</a></h3>
+<p>The result of the memory dump is usually analyzed by a disassembler such as Ghidra.
+A disassembler determines where to map each section from the PE Section Header.</p>
+<p>What will happen if a part of this section header is NULL?</p>
+<p>Consider the following program.
+Compile it and save it as "TestSectionHeader.exe."</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Listing 2</span>
+<span class="c1">// Compile and save as &quot;TestSectionHeader.exe&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="cp">#pragma code_seg(&quot;.sect1&quot;)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">hoge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;hoge&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">hoge</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+<p>In the above source code, <code>#pragma code_seg(".sect1")</code> is added.
+This pragma creates a new code section called <code>.sect1</code> in addition to the default <code>.text</code> section (Figure 4).
+The code for the <code>hoge</code> function and the <code>main</code> function are placed in <code>.sect1</code>.</p>
+<figure>
+    <img src="../assets/image_sections_before.PNG">
+    <figcaption>Figure 4 Sections of "TestSectionHeader.exe" executable</figcaption>
+</figure>
+
+<p>Next, edit the image section header in Ghidra and set most of the fields in the entry corresponding to .sect1 to NULL (Figure 5).</p>
+<figure>
+    <img src="../assets/image_section_header.PNG">
+    <figcaption>Figure 5 Listing view of the image section header </figcaption>
+</figure>
+
+<p>Then, reopen the same executable and you will see the following.</p>
+<figure>
+    <img src="../assets/image_sections_after.PNG">
+    <figcaption>Figure 6 Sections of "TestSectionHeader.exe" executable after the modification of the Image Section Header</figcaption>
+</figure>
+
+<p>You can see that <code>.sect1</code> is not listed in the Program Tree.</p>
+<p>By using this property and setting the RVA of the section header to be hidden by DVRT ARM64X to NULL at runtime, we can make its analysis difficult after the memory dump.
+The value of RVA can also be specified in another section as its value.
+This makes analysis difficult because the contents of another section are displayed when it is opened with a disassembler.</p>
+<h3 id="fooling-windbg">Fooling WinDbg<a class="headerlink" href="#fooling-windbg" title="Permanent link">&para;</a></h3>
+<p>Next, I introduce a method to make it difficult to analyze extracted code with WinDbg.
+Before explaining this, let me explain the Hybrid Code Map.</p>
+<p>Recall that ARM64X contains the code for three architectures: ARM64, ARM64EC, and x64.
+Hybrid Code Map is a structure that manages the location of an architecture's code in the addresses.
+The following is the result of outputting the contents of the Hybrid Code Map using dumpbin.</p>
+<div class="codehilite"><pre><span></span><code>&gt; dumpbin /LOADCONFIG KernelBase.dll
+...
+    Hybrid Code Address Range Table
+
+                Address Range
+          ----------------------
+            x64  0000000180001000 - 000000018000835F (00001000 - 0000835F)
+          arm64  0000000180009000 - 00000001801111CB (00009000 - 001111CB)
+        arm64ec  0000000180112000 - 0000000180227117 (00112000 - 00227117)
+            x64  0000000180228000 - 000000018022A001 (00228000 - 0022A001)
+</code></pre></div>
+
+<p>If the process is ARM64EC, the area marked as x64 and ARM64EC in the Hybrid Code Map is executed, and the area marked as ARM64 is not used.
+WinDbg changes the machine architecture in the disassembly view depending on which code (x64 or ARM64EC) is executed.
+WinDbg probably uses the Hybrid Code Map information to determine the machine architecture.</p>
+<p>Now, the ARM64EC process does not execute ARM64 code in ARM64X, but what would happen if we moved the program counter the ARM64 code in ARM64X?
+We can observe an interesting behavior.</p>
+<figure>
+    <img src="../assets/arm64x_reloc_obfus.gif">
+    <figcaption>Figure 7 PoC movie of fooling WinDbg disassembly</figcaption>
+</figure>
+
+<p>Look at the gif above. <code>b</code> instruction makes a transition to the code in the area marked as ARM64.
+After the transition, the disassembly result is <code>???</code>, indicating that it could not be correctly disassembled.
+However, we can observe that the step execution can be continued!</p>
+<p>The code at the destination address of the <code>b</code> is actually the shellcode of x64 calling <code>MessageBoxA</code> as shown below.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">0</span><span class="nf">x00000000</span><span class="w">      </span><span class="mi">33</span><span class="nv">c0</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000002</span><span class="w">      </span><span class="mi">4</span><span class="nv">c8bca</span><span class="w">         </span><span class="nv">mov</span><span class="w"> </span><span class="nb">r9</span><span class="p">,</span><span class="w"> </span><span class="nb">rdx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000005</span><span class="w">      </span><span class="mi">4</span><span class="nv">c8bd1</span><span class="w">         </span><span class="nv">mov</span><span class="w"> </span><span class="nb">r10</span><span class="p">,</span><span class="w"> </span><span class="nb">rcx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000008</span><span class="w">      </span><span class="mi">4885</span><span class="nv">d2</span><span class="w">         </span><span class="nv">test</span><span class="w"> </span><span class="nb">rdx</span><span class="p">,</span><span class="w"> </span><span class="nb">rdx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000000b</span><span class="w">      </span><span class="mi">0</span><span class="nv">f8491000000</span><span class="w">   </span><span class="nv">je</span><span class="w"> </span><span class="mh">0xa2</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000011</span><span class="w">      </span><span class="mi">450</span><span class="nv">fb602</span><span class="w">       </span><span class="nv">movzx</span><span class="w"> </span><span class="nb">r8d</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="w"> </span><span class="p">[</span><span class="nb">r10</span><span class="p">]</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000015</span><span class="w">      </span><span class="mi">4</span><span class="nv">d8d5201</span><span class="w">       </span><span class="nv">lea</span><span class="w"> </span><span class="nb">r10</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nb">r10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000019</span><span class="w">      </span><span class="mi">4183</span><span class="nv">c820</span><span class="w">       </span><span class="nv">or</span><span class="w"> </span><span class="nb">r8d</span><span class="p">,</span><span class="w"> </span><span class="mh">0x20</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000001d</span><span class="w">      </span><span class="mi">4133</span><span class="nv">c0</span><span class="w">         </span><span class="nv">xor</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">r8d</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000020</span><span class="w">      </span><span class="mi">8</span><span class="nv">bd0</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000022</span><span class="w">      </span><span class="nv">d1e8</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000024</span><span class="w">      </span><span class="mi">83</span><span class="nv">e201</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000027</span><span class="w">      </span><span class="mi">69</span><span class="nv">ca783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000002d</span><span class="w">      </span><span class="mi">33</span><span class="nv">c8</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000002f</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc1</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000031</span><span class="w">      </span><span class="nv">d1e9</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000033</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000036</span><span class="w">      </span><span class="mi">69</span><span class="nv">d0783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000003c</span><span class="w">      </span><span class="mi">33</span><span class="nv">d1</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000003e</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc2</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000040</span><span class="w">      </span><span class="nv">d1ea</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000042</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000045</span><span class="w">      </span><span class="mi">69</span><span class="nv">c8783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000004b</span><span class="w">      </span><span class="mi">33</span><span class="nv">ca</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000004d</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc1</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000004f</span><span class="w">      </span><span class="nv">d1e9</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000051</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000054</span><span class="w">      </span><span class="mi">69</span><span class="nv">d0783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000005a</span><span class="w">      </span><span class="mi">33</span><span class="nv">d1</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000005c</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc2</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000005e</span><span class="w">      </span><span class="nv">d1ea</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000060</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000063</span><span class="w">      </span><span class="mi">69</span><span class="nv">c8783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000069</span><span class="w">      </span><span class="mi">33</span><span class="nv">ca</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000006b</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc1</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000006d</span><span class="w">      </span><span class="nv">d1e9</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000006f</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000072</span><span class="w">      </span><span class="mi">69</span><span class="nv">d0783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000078</span><span class="w">      </span><span class="mi">33</span><span class="nv">d1</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000007a</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc2</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000007c</span><span class="w">      </span><span class="nv">d1ea</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">edx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000007e</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000081</span><span class="w">      </span><span class="mi">69</span><span class="nv">c8783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000087</span><span class="w">      </span><span class="mi">33</span><span class="nv">ca</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="nb">edx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000089</span><span class="w">      </span><span class="mi">8</span><span class="nv">bc1</span><span class="w">           </span><span class="nv">mov</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000008b</span><span class="w">      </span><span class="nv">d1e9</span><span class="w">           </span><span class="nv">shr</span><span class="w"> </span><span class="nb">ecx</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000008d</span><span class="w">      </span><span class="mi">83</span><span class="nv">e001</span><span class="w">         </span><span class="nv">and</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000090</span><span class="w">      </span><span class="mi">69</span><span class="nv">c0783bf682</span><span class="w">   </span><span class="nv">imul</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="mh">0x82f63b78</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000096</span><span class="w">      </span><span class="mi">33</span><span class="nv">c1</span><span class="w">           </span><span class="nv">xor</span><span class="w"> </span><span class="nb">eax</span><span class="p">,</span><span class="w"> </span><span class="nb">ecx</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x00000098</span><span class="w">      </span><span class="mi">4983</span><span class="nv">e901</span><span class="w">       </span><span class="nv">sub</span><span class="w"> </span><span class="nb">r9</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x0000009c</span><span class="w">      </span><span class="mi">0</span><span class="nv">f856fffffff</span><span class="w">   </span><span class="nv">jne</span><span class="w"> </span><span class="mh">0x11</span><span class="w"></span>
+<span class="err">0</span><span class="nf">x000000a2</span><span class="w">      </span><span class="nv">c3</span><span class="w">             </span><span class="nv">ret</span><span class="w"></span>
+</code></pre></div>
+
+<p>Although the exact cause is unknown, the ARM64 code regions are interpreted and executed as x64 code in the ARM64EC process.
+However, WinDbg refers to the Hybrid Code Map and disassembles as ARM64.
+Therefore, although the code can be executed, the disassembly view will be invalid.</p>
+<h2 id="side-effect-parent-process-dependent-code-execution">Side Effect: Parent-process-dependent code execution<a class="headerlink" href="#side-effect-parent-process-dependent-code-execution" title="Permanent link">&para;</a></h2>
+<p>Finally, I would like to mention the side effect of the DVRT ARM64X relocation-based obfuscation.</p>
+<p>Recall that DVRT ARM64X relocation is only applied when ARM64X is executed as an ARM64EC or x64 process.
+The relocation is not applied if it is run as an ARM64 process.</p>
+<p>For ARM64X DLLs, DVRT ARM64X is applied when ARM64EC or x64 processes use them.
+However, what about ARM64X EXEs?
+<a href="https://twitter.com/never_released">Longhorn</a> examined this, and the following table summarizes the results obtained by him.
+For ARM64X EXEs, the executed code in ARM64X depends on the parent process that runs it.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Architecture of parent process</th>
+<th align="center">Architecture of executed code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">x86</td>
+<td align="center">ARM64</td>
+</tr>
+<tr>
+<td align="center">x64</td>
+<td align="center">ARM64EC</td>
+</tr>
+<tr>
+<td align="center">ARM64</td>
+<td align="center">ARM64</td>
+</tr>
+<tr>
+<td align="center">ARM64EC</td>
+<td align="center">ARM64EC</td>
+</tr>
+</tbody>
+</table>
+<p>DVRT ARM64X relocation is applied only when the parent process architecture is ARM64EC or x64.
+This means that if the parent process architecture is x86 or ARM64, DVRT ARM64X relocation is not applied, and the ARM64 code in ARM64X is executed.
+Thus, ARM64X is a binary with different execution results depending on the architecture from which the parent process runs.</p>
+<p>This property can be exploited by attackers.
+For example, let us consider analyzing the ARM64X binary in a sandbox environment.
+ARM64X PE appears to be ARM64 PE through a simple static analysis (e.g., file type check by UNIX  <code>file</code> command).
+Therefore, if you do not identify ARM64X, you might run it as an ARM64 PE and obtain the result of the dynamic analysis (despite the fact that ARM64EC actually contains malicious code!).
+When scrutinizing the results of dynamic analysis, it is necessary to check not only to look the results when running as an ARM64 but also the results when running as an ARM64EC.</p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>In this article, we proposed the relocation-based obfuscation technique using DVRT ARM64X.</p>
+<p>As explained, relocation-based obfuscation techniques have been known for a long time.
+However, these techniques are now almost unusable because they rely on the image loader vulnerabilities that are currently fixed.
+With the introduction of DVRT ARM64X in Windows on ARM, relocation-based obfuscation can be used again for practical use.
+Since this technique does not rely on the vulnerabilities of the image loader, the proposed method can be used in Windows on ARM for a long time.</p>
+<p>I have also presented ideas to make the analysis of ARM64X more complicated and a side effect of the dependency of execution results on the parent process.
+Although some of these are not directly related to relocation-based obfuscation, they can be combined with the DVRT ARM64X obfuscation method to make analysis more difficult.</p>
+<p>Microsoft has not yet officially documented ARM64X, and there are not many reverse engineering results.
+Further research is required in this regard.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../new_reloc_chpev2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Discovering a new relocation entry of ARM64X in recent Windows 10 on Arm" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Discovering a new relocation entry of ARM64X in recent Windows 10 on Arm
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
