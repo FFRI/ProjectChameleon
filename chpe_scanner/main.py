@@ -31,12 +31,7 @@ class BinType(Enum):
 
     @staticmethod
     def has_metadata_pointer(load_config: lief.PE.LoadConfiguration) -> bool:
-        return (
-            type(load_config) == lief.PE.LoadConfigurationV4
-            or type(load_config) == lief.PE.LoadConfigurationV5
-            or type(load_config) == lief.PE.LoadConfigurationV6
-            or type(load_config) == lief.PE.LoadConfigurationV7
-        )
+        return type(load_config) == lief.PE.LoadConfigurationV4 or issubclass(type(load_config), lief.PE.LoadConfigurationV4)
 
     @staticmethod
     def get_chpe_bintype(bin_: lief.PE) -> "BinType":
